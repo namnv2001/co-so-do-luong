@@ -161,35 +161,37 @@ void loop()
   ftoa(t, t_str, 2);
   memset(DHT_result, 0, strlen(DHT_result)); //empty default string
   // asign value to DHT_default string
-        strcat(DHT_result, t_str);
-        strcat(DHT_result, "C ");
-        strcat(DHT_result, h_str);
-        strcat(DHT_result, "% ");
+  if (h >= 30 && h <= 80 && t >= 20 && t <= 35) { 
+    strcat(DHT_result, t_str);
+    strcat(DHT_result, "C ");
+    strcat(DHT_result, h_str);
+    strcat(DHT_result, "% ");
+  } else {
     if (h < 30) {
       strcat(DHT_result, "Humid low! ");
+      strcat(DHT_result, h_str);
+      strcat(DHT_result, "% ");
     };
     if (t < 20) {
       strcat(DHT_result, "Temp low! ");
+      strcat(DHT_result, t_str);
+      strcat(DHT_result, "C ");
     };
     if (h > 80) {
       strcat(DHT_result, "Humid high! ");
+      strcat(DHT_result, h_str);
+      strcat(DHT_result, "% ");
     };
     if (t > 35) {
       strcat(DHT_result, "Temp high! ");
+      strcat(DHT_result, t_str);
+      strcat(DHT_result, "C ");
     };
+  };
   Serial.print(DHT_result);              
   Serial.println();               
   delay(1000);           
   loop_LCD(DHT_result);  
-//  strcat(DHT_result, t_str);
-//  strcat(DHT_result, "C ");
-//  strcat(DHT_result, h_str);
-//  strcat(DHT_result, "%");
-//  
-//  Serial.print(DHT_result);              
-//  Serial.println();               
-//  delay(1000);           
-//  loop_LCD(DHT_result);  
 
   // Default code
   if(acqMode==1)
