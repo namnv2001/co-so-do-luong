@@ -188,7 +188,9 @@ void loop()
       strcat(DHT_result, "C ");
     };
   };
-  Serial.print(DHT_result);              
+  Serial.print(t_str);
+  Serial.print(",");
+  Serial.print(h_str);              
   Serial.println();               
   delay(1000);           
   loop_LCD(DHT_result);  
