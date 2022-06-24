@@ -157,13 +157,15 @@ void loop()
   char DHT_result[100];
   char h_str[10];
   char t_str[10];
-  ftoa(h, h_str, 2);
+  ftoa(h, h_str, 0);
   ftoa(t, t_str, 2);
   memset(DHT_result, 0, strlen(DHT_result)); //empty default string
   // asign value to DHT_default string
   if (h >= 30 && h <= 80 && t >= 20 && t <= 35) { 
+    strcat(DHT_result, "T=");
     strcat(DHT_result, t_str);
     strcat(DHT_result, "C ");
+    strcat(DHT_result, "H=");
     strcat(DHT_result, h_str);
     strcat(DHT_result, "% ");
   } else {
